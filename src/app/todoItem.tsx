@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { ITodo } from "./reducers/todosReducer";
 
 interface ITodoItem {
@@ -7,7 +7,7 @@ interface ITodoItem {
   handleRemove: (id: string) => void;
 }
 
-export default function TodoItem(props: ITodoItem) {
+function TodoItem(props: ITodoItem) {
   return (
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-100 flex items-center justify-between">
       <span
@@ -27,3 +27,5 @@ export default function TodoItem(props: ITodoItem) {
     </div>
   );
 }
+
+export default memo(TodoItem);

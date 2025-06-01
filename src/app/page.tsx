@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useReducer, useRef } from "react";
+import { FormEvent, useCallback, useReducer, useRef } from "react";
 import { todosReducer, ITodoActionType, ITodo } from "./reducers/todosReducer";
 import { v4 as uuidv4 } from "uuid";
 import Todo from "./todoItem";
@@ -22,19 +22,19 @@ export default function Home() {
     }
   };
 
-  const handleChange = (todo: ITodo) => {
+  const handleChange = useCallback((todo: ITodo) => {
     dispatch({
       type: ITodoActionType.Changed,
       todo: { ...todo, done: !todo.done },
     });
-  };
+  }, []);
 
-  const handleRemove = (id: string) => {
+  const handleRemove = useCallback((id: string) => {
     dispatch({
       type: ITodoActionType.Deleted,
       id,
     });
-  };
+  }, []);
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">

@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { ITodo } from "./reducers/todosReducer";
+import { ITodo } from "@/app/reducers/todosReducer";
 
 interface ITodoItem {
   todo: ITodo;
